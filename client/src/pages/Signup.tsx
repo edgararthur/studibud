@@ -5,6 +5,7 @@ import './signup.css'
 import { Input } from '../components/Input'
 import { Button } from '../components/Button'
 import logoImage from '../images/studybuddy_logo 1.png'
+import { AuthProvider } from '../context/AuthContext'
 // import axios from 'axios'
 // import { AuthProvider } from '../context/AuthContext'
 
@@ -17,7 +18,7 @@ export const Signup = () => {
 
     const [error, setError] = useState<string | null>(null)
 
-    const handleSignup = async (event) => {
+    const handleSignup = async (event: { preventDefault: () => void }) => {
         event.preventDefault();
         const firstName = firstnameRef.current?.value;
         const lastName = lastnameRef.current?.value;
@@ -31,12 +32,12 @@ export const Signup = () => {
             return;
         }
 
-        try {
-            user
+        // try {
+        //     await AuthProvider.
             
-        } catch (error) {
+        // } catch (error) {
             
-        }
+        // }
     }
 
     return (
@@ -81,7 +82,9 @@ export const Signup = () => {
                             </div>
                             {error && <p className="error-message">{error}</p>}
                         </div>
-                        <Button type='submit' onClick={handleSignup}>Sign Up</Button>
+                        <div className="submit">
+                            <Button type='submit' onClick={handleSignup}>Sign Up</Button>
+                        </div>
                     </form>
                 </div>
             </div>
