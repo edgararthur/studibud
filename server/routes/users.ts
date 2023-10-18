@@ -1,7 +1,7 @@
 import { FastifyInstance } from "fastify";
 // import { StreamChat } from "stream-chat"
 
-const streamChat = StreamChat.getInstance(process.env.STREAM_API_KEY!);
+// const streamChat = StreamChat.getInstance(process.env.STREAM_API_KEY!, process.env.STREAM_PRIVATE_API_KEY!);
 
 export async function userRoutes(app: FastifyInstance) {
     app.post<{Body: { id: string, firstName: string, lastName: string, email: string, password: string}}>("/signup", async (request, response) => {
