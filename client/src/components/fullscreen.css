@@ -1,0 +1,21 @@
+.screen__card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    min-height: 100vh;
+    background: #d6d6d6;
+}
+
+.screen__cardchildren {
+    width: 405px;
+    max-width: 100%;
+}
+
+.screen__body {
+    background: #ffffff;
+    padding: 6px;
+    box-shadow: rgba(86, 88, 89, 0.2) 0px 7px 25px;
+    text-align: center;
+    height: 100%;
+}

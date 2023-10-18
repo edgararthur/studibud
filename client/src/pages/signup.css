@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+.signup__body {
+    font-family: 'Poppins', sans-serif;
+}
+
+.logo {
+    padding: 25px 0 10px 15px;
+}
+
+.signup__form {
+    padding: 0 5px 12px 5px;
+}
+
+.signup__header {
+    font-size: 27px;
+    font-weight: 500;
+    padding: 12px 0 10px 0;
+    color: #2a2a2a;
+}
+
+.signup__header h1 {
+    font-size: 27px;
+    text-align: center;
+    font-weight: 500;
+    padding: 12px 0 10px 0;
+    color: #2a2a2a;
+}
+
+.signup__header p {
+    font-size: 15px;
+    font-weight: 500;
+    padding: 12px 0 10px 0;
+    color: #3a3a3a;
+}
+
+.head {
+    float: left;
+    padding: 10px 10px 5px 0;
+    color: #2a2a2a;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.username {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.username .first {
+    width: 50%;
+    margin: 0 10px 0 0;
+}
+
+.username .last {
+    width: 50%;
+    margin: 0 0 0 10px;
+}
+
+.email {
+    /* padding: 12px 0; */
+}
+
+.password {
+    /* padding: 12px 0; */
+}
+
+.confirm__password {
+    /* padding: 12px 0; */
+}
+
+.error-message {
+    color: red;
+    font-size: 13px;
+    font-weight: 400;
+    display: flex;
+    align-items: flex-start;
+}
