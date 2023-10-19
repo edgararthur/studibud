@@ -1,16 +1,47 @@
-import { FastifyInstance } from "fastify";
-// import { StreamChat } from "stream-chat"
+import fastify, { FastifyInstance, FastifyRequest, FastifyReply } from 'fastify'
+import bcrypt from 'bcrypt'
 
-// const streamChat = StreamChat.getInstance(process.env.STREAM_API_KEY!, process.env.STREAM_PRIVATE_API_KEY!);
+const app: FastifyInstance = fastify();
 
-export async function userRoutes(app: FastifyInstance) {
-    app.post<{Body: { id: string, firstName: string, lastName: string, email: string, password: string}}>("/signup", async (request, response) => {
-        const { id, firstName, lastName, email, password } = request.body;
+const users: any[] = [];
 
-        if (id == null || id === "" || firstName == null || firstName === "" || lastName == null || lastName === "" || email == null || email === "" || password == null || password === "") {
-            response.status(400).send()
+interface SignupRequestBody {
+    firstName: string;
+    lastName: string;
+    email: string;
+    password: string;
+}
+
+async function signupHandler(request: FastifyRequest, response: FastifyReply): Promise<void> {
+    try {
+        const requestBody: SignupRequestBody = request.body as SignupRequestBody;
+        const { firstName, lastName, email, password } = requestBody;
+
+        if (!firstName || !lastName || !email || !password) {
+            response.status(400).send({ error: "All fields are required" });
+            return;
         }
 
-        // npm i stream-chat
-    });
+        const userExists = users.some((user) => user.email === email);
+        if (userExists) {
+            response.status(400).send({ error: 'Email already exists' });
+            return;
+        }
+
+        const saltRounds = 10;
+        const hashedPassword = await bcrypt.hash(password, saltRounds)
+
+        const data = {
+            id: users.length,
+            firstName,
+            lastName,
+            email,
+            password: hashedPassword,
+        };
+
+        users.push(data);
+        response.status(201).send({ message: 'User registered successfully' });
+    } catch (error) {
+        response.status(500).send({ error: "Server Error" })
+    }
 }
